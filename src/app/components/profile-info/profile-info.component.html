@@ -1,0 +1,82 @@
+<ng-container *ngIf="curentUser">
+  <div class="cover-img">
+    <div class="user-avatar">
+      <img
+        [src]="curentUser.photoURL ?? 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg'"
+        alt="profile" width="70" height="70">
+    </div>
+  </div>
+  <div class="contents">
+    <div class="left-info">
+      <h1 class="section-title">Personal informations</h1>
+      <div class="row">
+        <div class="info-filed">
+          <span>First Name</span>
+          <p>{{curentUser.firstName}}</p>
+        </div>
+        <div class="info-filed">
+          <span>Last Name</span>
+          <p>{{curentUser.lastName}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="info-filed">
+          <span>Display Name</span>
+          <p>{{curentUser.displayName}}</p>
+        </div>
+        <div class="info-filed">
+          <span>Mobile No</span>
+          <p>{{curentUser.phone}}</p>
+        </div>
+      </div>
+      <div class="info-filed">
+        <span>Address</span>
+        <p>{{curentUser.address}}</p>
+      </div>
+    </div>
+    <div class="right-info">
+      <h1 class="section-title">Work informations</h1>
+      <div class="row">
+        <div class="info-filed">
+          <span>Company Name</span>
+          <p>{{curentUser.companyName}}</p>
+        </div>
+        <div class="info-filed">
+          <span>Position</span>
+          <p>{{curentUser.position}}</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="info-filed">
+          <span>Work Phone Number</span>
+          <p>{{curentUser.workPhoneNumber}}</p>
+        </div>
+        <div class="info-filed">
+          <span>Country Code</span>
+          <p>{{curentUser.countryCode}}</p>
+        </div>
+      </div>
+      <div class="info-filed">
+        <span>Company Address</span>
+        <p>{{curentUser.companyAddress}}</p>
+      </div>
+    </div>
+    <div class="card-wrapper">
+      <h1 class="section-title">Card informations</h1>
+      <div class="wrapper">
+        <div class="card-item">
+          <span>Front view</span>
+          <img
+            [src]="curentUser.frontCardURL ?? 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg'"
+            alt="profile">
+        </div>
+        <div class="card-item">
+          <span>Back view</span>
+          <img
+            [src]="curentUser.backCardURL?? 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg'"
+            alt="profile">
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>

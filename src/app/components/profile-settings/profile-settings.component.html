@@ -1,0 +1,258 @@
+<!-- <div class="form-control user-info-wrapper" *ngIf="curentUser$ | async as user">
+  <div class="contents">
+    <button mat-mini-fab (click)="inputField.click()">
+      <mat-icon>edit</mat-icon>
+    </button>
+    <input #inputField type="file" hidden (change)="uploadImage($event, user.uid)" />
+
+
+    <form [formGroup]="userProfileForm" (ngSubmit)="saveProfile()">
+      <h1>Personal informations</h1>
+      <div class="row">
+        <mat-form-field>
+          <input type="text" matInput formControlName="firstName" placeholder="First Name" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput formControlName="lastName" placeholder="Last Name" />
+        </mat-form-field>
+      </div>
+
+      <div class="row">
+        <mat-form-field>
+          <input type="text" matInput formControlName="displayName" placeholder="Display Name" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="number" matInput formControlName="phone" placeholder="Phone" />
+        </mat-form-field>
+      </div>
+      <mat-form-field>
+        <input type="text" matInput formControlName="address" placeholder="Address" />
+      </mat-form-field>
+
+      <h1>Work informations</h1>
+      <mat-form-field>
+        <input type="text" matInput formControlName="companyName" placeholder="Company Name" />
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput formControlName="position" placeholder="Position" />
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput formControlName="workPhoneNumber" placeholder="Work Phone Number" />
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput formControlName="countryCode" placeholder="Country Code" />
+      </mat-form-field>
+      <mat-form-field>
+        <input type="text" matInput formControlName="companyAddress" placeholder="Company Address" />
+      </mat-form-field>
+
+      <button mat-mini-fab (click)="fViewInputField.click()">
+        <mat-icon>edit</mat-icon>
+        FE
+      </button>
+      <input #fViewInputField type="file" hidden (change)="uploadCardImage($event, user.uid, true)" />
+
+      <button mat-mini-fab (click)="bViewInputField.click()">
+        <mat-icon>edit</mat-icon>
+        BE
+      </button>
+      <input #bViewInputField type="file" hidden (change)="uploadCardImage($event, user.uid, false)" />
+
+      <button type="submit" class="margin-top" mat-raised-button color="primary">
+        Save
+      </button>
+    </form>
+  </div>
+</div> -->
+
+<div class="profile-setting-wrapper">
+  <div class="cover-img">
+    <button mat-button class="edit-icon" disabled>
+      <mat-icon>edit</mat-icon>
+    </button>
+  </div>
+
+  <ng-container *ngIf="curentUser$ | async as user">
+    <form [formGroup]="userProfileForm" (ngSubmit)="saveProfile()" class="p-4">
+      <h1 class="section-title">Personal Informations</h1>
+      <div class="row mx-0 mb-2">
+        <div class="col-4 text-wrapper">
+          First Name
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="firstName" placeholder="First Name" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mx-0 mb-2">
+        <div class="col-4 text-wrapper">
+          Last Name
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="lastName" placeholder="Last Name" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mx-0 mb-3">
+        <div class="col-4 text-wrapper">
+          Display Name
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="displayName" placeholder="Display Name" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mx-0 mb-3">
+        <div class="col-4 text-wrapper">
+          Profile Image
+        </div>
+        <div class="col-2">
+          <img
+            [src]="user.photoURL?? 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg'"
+            alt="profile" height="100%" width="100%" class="object-fit-cover edit-avatar-image">
+        </div>
+        <div class="col-6">
+          <button mat-button type="button" class="update-btn">
+            <mat-icon>edit</mat-icon>
+            Update
+          </button>
+          <div class="selected-file" *ngIf="profileImageInfo && profileImageInfo.name">
+            <span>{{profileImageInfo.name}}</span>
+            <mat-icon class="mat-18">close</mat-icon>
+          </div>
+          <input #bViewInputField type="file" hidden (change)="storeProfileImageLocally($event)" />
+        </div>
+      </div>
+      <div class="row mx-0 mb-2">
+        <div class="col-4 text-wrapper">
+          Phone Numbber
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="number" matInput formControlName="phone" placeholder="Phone" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mx-0 mb-2">
+        <div class="col-4 text-wrapper">
+          Address
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="address" placeholder="Address" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <hr />
+
+      <h1 class="section-title">Work Informations</h1>
+
+      <div class="row mx-0 mb-2">
+        <div class="col-4 text-wrapper">
+          Company Name
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="companyName" placeholder="Company Name" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mx-0 mb-2">
+        <div class="col-4 text-wrapper">
+          Position
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="position" placeholder="Position" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mx-0 mb-2">
+        <div class="col-4 text-wrapper">
+          Work Phone Number
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="workPhoneNumber" placeholder="Work Phone Number" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mx-0 mb-2">
+        <div class="col-4 text-wrapper">
+          Country Code
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="countryCode" placeholder="Country Code" />
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="row mx-0 mb-2">
+        <div class="col-4 text-wrapper">
+          Company Address
+        </div>
+        <div class="col-8 input-wrapper">
+          <mat-form-field appearance="outline">
+            <input type="text" matInput formControlName="companyAddress" placeholder="Company Address" />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <hr />
+
+      <h1 class="section-title">Card Informations</h1>
+
+      <div class="row mx-0 mb-3">
+        <div class="col-4 text-wrapper">
+          Front view
+        </div>
+        <div class="col-4">
+          <img
+            [src]="user.frontCardURL ?? 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg'"
+            alt="profile" height="100%" width="100%" class="object-fit-cover">
+        </div>
+        <div class="col-4">
+          <button mat-button type="button" class="update-btn" (click)="fViewInputField.click()">
+            <mat-icon>edit</mat-icon>
+            Update
+          </button>
+          <div class="selected-file" *ngIf="frontViewImageInfo && frontViewImageInfo.name">
+            <span>{{frontViewImageInfo.name}}</span>
+            <mat-icon class="mat-18">close</mat-icon>
+          </div>
+          <input #fViewInputField type="file" hidden (change)="storeImageLocally($event, true)" />
+        </div>
+      </div>
+
+      <div class="row mx-0 mb-3">
+        <div class="col-4 text-wrapper">
+          Back view
+        </div>
+        <div class="col-4">
+          <img
+            [src]="user.backCardURL?? 'https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg'"
+            alt="profile" height="100%" width="100%" class="object-fit-cover">
+        </div>
+        <div class="col-4">
+          <button mat-button type="button" class="update-btn" (click)="bViewInputField.click()">
+            <mat-icon>edit</mat-icon>
+            Update
+          </button>
+          <div class="selected-file" *ngIf="backViewImageInfo && backViewImageInfo.name">
+            <span>{{backViewImageInfo.name}}</span>
+            <mat-icon class="mat-18">close</mat-icon>
+          </div>
+          <input #bViewInputField type="file" hidden (change)="storeImageLocally($event, false)" />
+        </div>
+      </div>
+
+      <button type="submit" class="margin-top ml-auto" mat-raised-button color="primary">
+        Save
+      </button>
+    </form>
+  </ng-container>
+</div>

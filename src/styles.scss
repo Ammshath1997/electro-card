@@ -1,1 +1,118 @@
-/* You can add global styles to this file, and also import other style files */
+@import "/node_modules/bootstrap/scss/bootstrap.scss";
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mr-16 {
+  margin-right: 16px !important;
+}
+
+.p-30 {
+  padding: 30px !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.profile-menu {
+  min-width: 170px !important;
+  margin-top: 13px;
+  transform-origin: left top;
+  margin-top: 13px;
+  background: #673ab7;
+  box-shadow: none;
+  border-radius: 0 0 6px 6px !important;
+}
+
+.px-30 {
+  padding: 0 48px !important;
+}
+
+.px-96 {
+  padding: 0 96px !important;
+}
+
+.py-30 {
+  padding: 0 30px !important;
+}
+
+.container-padding {
+  padding: 18px 96px !important;
+}
+
+.no-po {
+  opacity: 0.5;
+
+  &:hover {
+    cursor: not-allowed !important;
+  }
+}
+
+.text-wrapper {
+  height: 48px;
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper {
+  height: 48px;
+  display: flex;
+  align-items: center;
+
+  mat-form-field {
+    width: 100%;
+    height: 100%;
+
+    .mat-form-field-wrapper {
+      padding: 0 !important;
+      height: 100% !important;
+      margin: 0 !important;
+
+      .mat-form-field-flex {
+        height: 100%;
+        margin: 0;
+        padding: 0 !important;
+        display: flex;
+        align-items: center;
+      }
+
+      .mat-form-field-outline {
+        height: 100%;
+        top: 0 !important;
+      }
+
+      .mat-form-field-outline {
+        height: 100%;
+      }
+
+      .mat-form-field-infix {
+        border-top: 0;
+        margin: 0;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 16px !important;
+
+        input {
+          margin-top: 0;
+        }
+      }
+    }
+  }
+}
+
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.ml-auto {
+  margin-left: auto;
+}

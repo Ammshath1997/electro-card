@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "ecard-system-868be": {
+      "hosting": {
+        "e-card-system": [
+          "ecard-system-868be"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "ecard-system-868be"
+  }
+}

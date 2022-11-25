@@ -1,0 +1,26 @@
+<div class="profile-wrapper">
+  <div class="left-user-panel">
+    <h1>Profile info</h1>
+    <ul>
+      <li [ngClass]="currentTab == i ? 'active' : ''" *ngFor="let link of navLinks; let i = index"
+        (click)="swicthTabs(i)">
+        <mat-icon>{{link.icon}}</mat-icon>
+        <a>{{link.label}}</a>
+      </li>
+    </ul>
+    <button class="logut-btn" (click)="logOut()">
+      <mat-icon>logout</mat-icon>
+      logout
+    </button>
+  </div>
+
+  <ng-container *ngIf="curentUser$ | async as user">
+    <div class="form-control user-info-wrapper">
+      <ng-container *ngIf="currentTab == 0">
+        <app-profile-info [curentUser]="user"></app-profile-info>
+      </ng-container>
+      <ng-container *ngIf="currentTab == 1">
+        <app-profile-settings></app-profile-settings>
+      </ng-container>
+    </div>
+  </ng-container>
